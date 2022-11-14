@@ -1,4 +1,4 @@
 ## Installation
-``bash
+```bash
 $ docker compose up
 ```
