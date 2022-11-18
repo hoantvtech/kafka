@@ -7,12 +7,24 @@ const kafka = new Kafka({
 
 const producer = kafka.producer();
 
-async function sendExample(data) {
+async function sendCoreActionLog(data) {
   await producer.connect()
   await producer.send({
-    topic: 'test-topic',
+    topic: 'dev_createCoreActionLog',
     messages: data,
   });
 }
 
-sendExample([{ value: 'Hello KafkaJS user1!' },]);
+for (let i = 0; i <= 2; i++) {
+  sendCoreActionLog([
+    {
+      value: JSON.stringify({
+        action: 'view_video_lesson',
+        user_id: 4297,
+        create_date: '2022-11-17 05:46:49',
+        update_date: '2022-11-17 03:28:49'
+      }),
+    }
+  ]);
+}
+
